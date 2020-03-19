@@ -4,12 +4,11 @@ using namespace std;
 
 void tutorial(){
     string pieces;
-
-
-while(true){
     cout<<"_____________________________________________________________________\n\n\n";
     cout<<"[pawn,queen,bishop,knight,rook,king] and [exit] to end the tutorial\n\n\n";
     cout<<"_____________________________________________________________________\n\n\n";
+
+while(true){
     cout<<"which pieces do you want to know its moves? : ";
     cin>>pieces;
 
