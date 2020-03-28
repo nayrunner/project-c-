@@ -6,4 +6,4 @@
 
 example: https://github.com/jordancunningham/Chess
 
-14 Days left
+13 Days left
