@@ -6,7 +6,7 @@ using namespace std;
 class Player{
 	public:
 		int number;
-		vector<int*> Pptr;
+		vector<int*> ptr;
 		Player(int);
 };
 
@@ -14,7 +14,23 @@ void makeLine();
 void insertPiece(int [][8]);
 void drawBoard(int [][8]);
 char NtoP(int);
-void Initial(int [][8],int,Player);
+
+void testPtr(Player p){	//! DebugFunction NOT-IN-FINAL-VERSION
+	for(int i=0;i < 16 ;i++) cout << p.ptr[i] <<"\n";
+	cout << "Player " << p.number << " Pieces\n";
+}
+
+void testAddress(int B[][8]){    //! DebugFunction NOT-IN-FINAL-VERSION
+	cout << "\n";
+	for(int i = 0; i < 8 ; i++){
+		for(int j = 0;j < 8; j++){
+			cout << " || " << &B[i][j];
+		}
+		cout << " ||";
+		cout << "\n";
+	}
+	cout << "-------------------------------------------------------------------\n";
+}
 
 int main(){
 	int board[8][8] = {
@@ -30,7 +46,46 @@ int main(){
 	};
 	
 	Player p1(1); Player p2(2);
-	int turn = 0;
+	/*line 1*/
+	p1.ptr.push_back(&board[7][0]);
+	p1.ptr.push_back(&board[7][1]); 
+	p1.ptr.push_back(&board[7][2]);
+	p1.ptr.push_back(&board[7][3]);
+	p1.ptr.push_back(&board[7][4]);
+	p1.ptr.push_back(&board[7][5]);
+	p1.ptr.push_back(&board[7][6]);
+	p1.ptr.push_back(&board[7][7]);
+	/*line 3*/
+	p1.ptr.push_back(&board[5][0]);
+	p1.ptr.push_back(&board[5][1]);
+	p1.ptr.push_back(&board[5][2]);
+	p1.ptr.push_back(&board[5][3]);
+	p1.ptr.push_back(&board[5][4]);
+	p1.ptr.push_back(&board[5][5]);
+	p1.ptr.push_back(&board[5][6]);
+	p1.ptr.push_back(&board[5][7]);
+	/* line 8*/
+	p2.ptr.push_back(&board[0][0]);
+	p2.ptr.push_back(&board[0][1]);
+	p2.ptr.push_back(&board[0][2]);
+	p2.ptr.push_back(&board[0][3]);
+	p2.ptr.push_back(&board[0][4]);
+	p2.ptr.push_back(&board[0][5]);
+	p2.ptr.push_back(&board[0][6]);
+	p2.ptr.push_back(&board[0][7]);
+	/* line 6*/
+	p2.ptr.push_back(&board[2][0]);
+	p2.ptr.push_back(&board[2][1]);
+	p2.ptr.push_back(&board[2][2]);
+	p2.ptr.push_back(&board[2][3]);
+	p2.ptr.push_back(&board[2][4]);
+	p2.ptr.push_back(&board[2][5]);
+	p2.ptr.push_back(&board[2][6]);
+	p2.ptr.push_back(&board[2][7]);
+	
+	testAddress(board); //debugFunc
+	
+	testPtr(p1); //debugFunc
 	
 	while(true){
 		string comd1,comd2;
@@ -39,7 +94,6 @@ int main(){
 		getline(cin,comd1);
 		cout << "Input Player 2 command: ";
 		getline(cin,comd2);
-		turn++;
 	}
 	
 }
@@ -53,7 +107,7 @@ void makeLine(){
 		cout << "   =========================================\n";
 	}
 
-void insertPiece(int B[][8]){ 	//! i is row , j is columb
+void insertPiece(int B[][8]){ 	//? i is row , j is columb
 	int count = 8;
 	for(int i = 0; i < 8 ; i++){
 		cout << count;
@@ -95,9 +149,6 @@ char NtoP(int N) {  //TODO NtoP is Number to Pieces
 	}
 }
 
-void Initial(int B[][8],int r,Player p){
-	for(int j = 0;j < 8;j++) p.Pptr.push_back(&B[r][j]);
-}
 
 
 /*
