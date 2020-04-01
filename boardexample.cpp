@@ -1,48 +1,54 @@
 #include<iostream>
+#include<string>
+#include<vector>
 using namespace std;
+
+class Player{
+	public:
+		int number;
+		vector<int*> Pptr;
+		Player(int);
+};
 
 void makeLine();
 void insertPiece(int [][8]);
-void makeBoard(int [][8]);
+void drawBoard(int [][8]);
 char NtoP(int);
+void Initial(int [][8],int,Player);
 
 int main(){
 	int board[8][8] = {
-		-1,-2,-3,-4,-5,-3,-2,-1,
-		 0, 0, 0, 0, 0, 0, 0, 0,
-		-6,-6,-6,-6,-6,-6,-6,-6,
-		 0, 0, 0, 0, 0, 0, 0, 0,
-		 0, 0, 0, 0, 0, 0, 0, 0,
-		 6, 6, 6, 6, 6, 6, 6, 6,
-		 0, 0, 0, 0, 0, 0, 0, 0,
-		 1, 2, 3, 5, 4, 3, 2, 1,
+	/*   0  1  2  3  4  5  6  7  */
+  /*0*/	-1,-2,-3,-4,-5,-3,-2,-1, 
+  /*1*/	 0, 0, 0, 0, 0, 0, 0, 0,
+  /*2*/	-6,-6,-6,-6,-6,-6,-6,-6,
+  /*3*/	 0, 0, 0, 0, 0, 0, 0, 0,
+  /*4*/	 0, 0, 0, 0, 0, 0, 0, 0,
+  /*5*/	 6, 6, 6, 6, 6, 6, 6, 6,
+  /*6*/	 0, 0, 0, 0, 0, 0, 0, 0,
+  /*7*/	 1, 2, 3, 5, 4, 3, 2, 1,
 	};
-	makeBoard(board);
-/*
-	cout << "\n";
-	cout << "      A    B    C    D    E    F    G    H   \n";
-	cout << "   ==========================================\n";
-	cout << " 8 || R || N || B || Q || K || B || N || R ||\n";
-	cout << "   ==========================================\n";
-	cout << " 7 ||   ||   ||   ||   ||   ||   ||   ||   ||\n";
-	cout << "   ==========================================\n";
-	cout << " 6 || P || P || P || P || P || P || P || P ||\n";
-	cout << "   ==========================================\n";
-	cout << " 5 ||   ||   ||   ||   ||   ||   ||   ||   ||\n";
-	cout << "   ==========================================\n";
-	cout << " 4 ||   ||   ||   ||   ||   ||   ||   ||   ||\n";
-	cout << "   ==========================================\n";
-	cout << " 3 || p || p || p || p || p || p || p || p ||\n";
-	cout << "   ==========================================\n";
-	cout << " 2 ||   ||   ||   ||   ||   ||   ||   ||   ||\n";
-	cout << "   ==========================================\n";
-	cout << " 1 || r || n || b || k || q || b || n || r ||\n";
-	cout << "   ==========================================\n";
-*/
+	
+	Player p1(1); Player p2(2);
+	int turn = 0;
+	
+	while(true){
+		string comd1,comd2;
+		drawBoard(board);
+		cout << "Input Player 1 command: ";
+		getline(cin,comd1);
+		cout << "Input Player 2 command: ";
+		getline(cin,comd2);
+		turn++;
+	}
 	
 }
 
 /* function */ 
+Player::Player(int n){
+	number = n; 
+}
+
 void makeLine(){
 		cout << "   =========================================\n";
 	}
@@ -61,7 +67,7 @@ void insertPiece(int B[][8]){ 	//! i is row , j is columb
 	}
 }
 
-void makeBoard(int B[][8]){
+void drawBoard(int B[][8]){
 	cout << "     A    B    C    D    E    F    G    H   \n";
 	makeLine();
 	insertPiece(B);
@@ -88,3 +94,30 @@ char NtoP(int N) {  //TODO NtoP is Number to Pieces
 		default: return ' '; break;
 	}
 }
+
+void Initial(int B[][8],int r,Player p){
+	for(int j = 0;j < 8;j++) p.Pptr.push_back(&B[r][j]);
+}
+
+
+/*
+	cout << "\n";
+	cout << "      A    B    C    D    E    F    G    H   \n";
+	cout << "   ==========================================\n";
+	cout << " 8 || R || N || B || Q || K || B || N || R ||\n";
+	cout << "   ==========================================\n";
+	cout << " 7 ||   ||   ||   ||   ||   ||   ||   ||   ||\n";
+	cout << "   ==========================================\n";
+	cout << " 6 || P || P || P || P || P || P || P || P ||\n";
+	cout << "   ==========================================\n";
+	cout << " 5 ||   ||   ||   ||   ||   ||   ||   ||   ||\n";
+	cout << "   ==========================================\n";
+	cout << " 4 ||   ||   ||   ||   ||   ||   ||   ||   ||\n";
+	cout << "   ==========================================\n";
+	cout << " 3 || p || p || p || p || p || p || p || p ||\n";
+	cout << "   ==========================================\n";
+	cout << " 2 ||   ||   ||   ||   ||   ||   ||   ||   ||\n";
+	cout << "   ==========================================\n";
+	cout << " 1 || r || n || b || k || q || b || n || r ||\n";
+	cout << "   ==========================================\n";
+*/
