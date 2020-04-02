@@ -1,37 +1,26 @@
-#include<iostream>
-#include<string>
-#include<vector>
+#include"player.h"
 using namespace std;
-
-class Player{
-	public:
-		int number;
-		vector<int*> ptr;
-		Player(int);
-};
 
 void makeLine();
 void insertPiece(int [][8]);
 void drawBoard(int [][8]);
 char NtoP(int);
 
-void testPtr(Player p){	//! DebugFunction NOT-IN-FINAL-VERSION
-	for(int i=0;i < 16 ;i++) cout << p.ptr[i] <<"\n";
-	cout << "Player " << p.number << " Pieces\n";
-}
+void testPtr(Player);	//! DebugFunction NOT-IN-FINAL-VERSION
+void testAddress(int [][8]); //! DebugFunction NOT-IN-FINAL-VERSION
 
-void testAddress(int B[][8]){    //! DebugFunction NOT-IN-FINAL-VERSION
+void inputCommand(Player x){
+	string com;
+	char pos1[3],pos2[3]; 
+	char check[] = "a1",check2[] = "a2";
+	cout << "Input Player " << x.number << " command: ";
+	getline(cin,com);
+	scanf(com.c_str(),"%s to %s",pos1,pos2);
+	cout << strcmp(pos1,check);
+	cout << strcmp(pos2,check2);
 	cout << "\n";
-	for(int i = 0; i < 8 ; i++){
-		for(int j = 0;j < 8; j++){
-			cout << " || " << &B[i][j];
-		}
-		cout << " ||";
-		cout << "\n";
-	}
-	cout << "-------------------------------------------------------------------\n";
+	
 }
-
 int main(){
 	int board[8][8] = {
 	/*   0  1  2  3  4  5  6  7  */
@@ -86,23 +75,19 @@ int main(){
 	//testAddress(board); //debugFunc
 	//testPtr(p1); //debugFunc
 	
-	string format = "%s %s %s";
+	bool Turn = true; //TODO if false=player2,true=player1
 	while(true){
-		string comd1,comd2;
 		drawBoard(board);
-		cout << "Input Player 1 command: ";
-		getline(cin,comd1);
-		//scanf(com1,format,)
-		cout << "Input Player 2 command: ";
-		getline(cin,comd2);
+		if(Turn){ //player1
+			inputCommand(p1);
+		}else{ //player2
+			inputCommand(p2);
+		}
 	}
 	
 }
 
 /* function */ 
-Player::Player(int n){
-	number = n; 
-}
 
 void makeLine(){
 		cout << "   =========================================\n";
@@ -148,6 +133,24 @@ char NtoP(int N) {  //TODO NtoP is Number to Pieces
 		case 7: return 'F'; break;
 		default: return ' '; break;
 	}
+}
+
+/*! DebugFunction NOT-IN-FINAL-VERSION */
+void testPtr(Player p){	
+	for(int i=0;i < 16 ;i++) cout << p.ptr[i] <<"\n";
+	cout << "Player " << p.number << " Pieces\n";
+}
+
+void testAddress(int B[][8]){    
+	cout << "\n";
+	for(int i = 0; i < 8 ; i++){
+		for(int j = 0;j < 8; j++){
+			cout << " || " << &B[i][j];
+		}
+		cout << " ||";
+		cout << "\n";
+	}
+	cout << "-------------------------------------------------------------------\n";
 }
 
 
