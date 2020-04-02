@@ -1,7 +1,7 @@
 #include<iostream>
 #include<string>
-#include"grandopening.h"
-#include"tutorial.h"
+#include"startmenu.h"
+#include"how2play.h"
 using namespace std;
 int main()
 {
@@ -12,7 +12,9 @@ int main()
         cin >> command;
         command = toupper(command);
         //if ('P')
-        
+        if(command == 'P'){
+            
+        }
         //else if('H')
         if(command == 'H'){tutorial();
         grandopening();}

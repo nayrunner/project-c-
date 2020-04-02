@@ -1,5 +1,5 @@
 #include"player.h"
-// #include"checkmove.h"
+#include"checkmove.h"
 using namespace std;
 
 void makeLine();
@@ -7,7 +7,7 @@ void insertPiece(int [][8]);
 void drawBoard(int [][8]);
 char NtoP(int);
 bool checkIsLegit(string);
-bool inputCommandOne(Player,int [][8]);
+void inputCommand(Player,int [][8],bool &);
 
 void testPtr(Player);	//! DebugFunction NOT-IN-FINAL-VERSION
 void testAddress(int [][8]); //! DebugFunction NOT-IN-FINAL-VERSION
@@ -70,11 +70,9 @@ int main(){
 	while(true){
 		drawBoard(board);
 		if(Turn){ //player1
-			if(inputCommandOne(p1,board)){
-				inputCommandTwo
-			};
+			inputCommand(p1,board,Turn);
 		}else{ //player2
-			inputCommandOne(p2,board);
+			inputCommand(p2,board,Turn);
 		}
 	}
 	
@@ -151,14 +149,19 @@ bool checkIsLegit(string s){
 	}
 }
 
-bool inputCommandOne(Player x,int B[][8]){
+void inputCommand(Player x,int B[][8],bool &T){
 	string com;
 	cout << "[Player " << x.number << "] select your pieces: "; //? input Position
 	cin >> com;
 	if(checkIsLegit(com)){
-		if(x.checkWhoPieces(com,B)) return true;
-		else return false;
-	}else return false;
+		x.checkWhoPieces(com,B);
+	}
+	string move;
+	cout << "[Player " << x.number << "] make your move: ";//? input move position
+	cin >> move;
+	toupper(move[0]);
+	toupper(com[0]);
+	if( x.checkmove(move,com,B[com[0]-65][abs(com[1]-56)]) == false){cout << "Invalid Position.\n";}
 }
 
 
