@@ -12,7 +12,7 @@ class Player{
 		
 		Player(int);
 		bool checkWhoPieces(string);
-		
+		bool checkmove(string,int [][8]);
 };
 
 Player::Player(int n){
@@ -26,3 +26,10 @@ bool Player::checkWhoPieces(string C){ //A-H [][0-7], 1-8 [7-0][]
 }
 
 //bool checkMove()
+bool Player::checkmove(string com,int board[][8]){
+	
+	//pawn
+	if(board[com[0]-45][com[1]])
+    
+
+}
