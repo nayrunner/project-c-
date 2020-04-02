@@ -156,6 +156,12 @@ void inputCommand(Player x,bool &T,int B[][8]){
 	if(checkIsLegit(com)){
 		x.checkWhoPieces(com,B);
 	}
+	cout << "[Player " << x.number << "] make your move: ";//? input move position
+	cin >> move;
+	toupper(move[0]);
+	toupper(com[0]);
+	if( x.checkmove(move,com,board[com[0]-65][abs(com[1]-56)]) == false){cout << "Invalid Position.\n";}
+}
 }
 
 
