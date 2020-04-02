@@ -6,8 +6,9 @@ void makeLine();
 void insertPiece(int [][8]);
 void drawBoard(int [][8]);
 char NtoP(int);
-void inputCommand(Player);
 bool checkIsLegit(string);
+void inputCommand(Player,bool &);
+
 
 void testPtr(Player);	//! DebugFunction NOT-IN-FINAL-VERSION
 void testAddress(int [][8]); //! DebugFunction NOT-IN-FINAL-VERSION
@@ -70,9 +71,9 @@ int main(){
 	while(true){
 		drawBoard(board);
 		if(Turn){ //player1
-			inputCommand(p1);
+			inputCommand(p1,Turn);
 		}else{ //player2
-			inputCommand(p2);
+			inputCommand(p2,Turn);
 		}
 	}
 	
@@ -126,14 +127,6 @@ char NtoP(int N) {  //TODO NtoP is Number to Pieces
 	}
 }
 
-void inputCommand(Player x){
-	string com;
-	cout << "[Player " << x.number << "] select your pieces: "; //? input Position
-	cin >> com;
-	checkIsLegit(com);
-	cout << "\n";	
-}
-
 bool checkIsLegit(string s){
 	if(s.size() == 2){
 		int temp = int(toupper(s[0]));
@@ -156,6 +149,17 @@ bool checkIsLegit(string s){
 		return false;
 	}
 }
+
+void inputCommand(Player x,bool &T){
+	string com;
+	cout << "[Player " << x.number << "] select your pieces: "; //? input Position
+	cin >> com;
+	if(checkIsLegit(com)){
+		x.checkWhoPieces(com);
+	}
+}
+
+
 /*! DebugFunction NOT-IN-FINAL-VERSION */
 void testPtr(Player p){	
 	for(int i=0;i < 16 ;i++) cout << p.ptr[i] <<"\n";
