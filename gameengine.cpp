@@ -151,7 +151,7 @@ bool checkIsLegit(string s){
 	}
 }
 
-void inputCommand(Player x,bool &T,int board[][8]){
+void inputCommand(Player x,bool &T,int B[][8]){
 	string com;
 	cout << "[Player " << x.number << "] select your pieces: "; //? input Position
 	cin >> com;

@@ -11,7 +11,7 @@ class Player{
 		vector<int*> ptr;
 		
 		Player(int);
-		bool checkWhoPieces(string);
+		bool checkWhoPieces(string,int [][8]);
 		bool checkmove(string,int [][8]);
 };
 
@@ -19,10 +19,11 @@ Player::Player(int n){
 	number = n; 
 }
 
-bool Player::checkWhoPieces(string C){ //A-H [][0-7], 1-8 [7-0][]
+bool Player::checkWhoPieces(string C,int B[][8]){ //A-H [][0-7], 1-8 [7-0][]
 	int temp = int(toupper(C[0]))-65 ;
 	int temp2 = (49-int(C[1]))+7;
-	int *ptr = NULL;
+	int *ptr = B[temp][temp2];
+	
 }
 
 //bool checkMove()
