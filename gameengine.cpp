@@ -5,22 +5,13 @@ void makeLine();
 void insertPiece(int [][8]);
 void drawBoard(int [][8]);
 char NtoP(int);
+void inputCommand(Player);
+bool checkIsLegit(string);
 
 void testPtr(Player);	//! DebugFunction NOT-IN-FINAL-VERSION
 void testAddress(int [][8]); //! DebugFunction NOT-IN-FINAL-VERSION
 
-void inputCommand(Player x){
-	string com;
-	char pos1[3],pos2[3]; 
-	char check[] = "a1",check2[] = "a2";
-	cout << "Input Player " << x.number << " command: ";
-	getline(cin,com);
-	scanf(com.c_str(),"%s to %s",pos1,pos2);
-	cout << strcmp(pos1,check);
-	cout << strcmp(pos2,check2);
-	cout << "\n";
-	
-}
+
 int main(){
 	int board[8][8] = {
 	/*   0  1  2  3  4  5  6  7  */
@@ -135,6 +126,32 @@ char NtoP(int N) {  //TODO NtoP is Number to Pieces
 	}
 }
 
+void inputCommand(Player x){
+	string com;
+	cout << "[Player " << x.number << "] select your pieces: "; //? input Position
+	cin >> com;
+	cout << "\n";	
+}
+
+bool checkIsLegit(string s){
+	if(s.size() == 2){
+		int temp = int(toupper(s[0]));
+		if(temp > 64 && temp < 73){
+			if(stoi(s[1]) > 0 && stoi(s[1]) < 9){
+				return true;
+			}else{
+				cout << "Invalid Position\n";
+				return false;
+			}
+		}else{
+			cout << "Invalid Input.\n";
+			return false;
+		}
+	}else{
+		cout << "Invalid Input.\n";
+		return false;
+	}
+}
 /*! DebugFunction NOT-IN-FINAL-VERSION */
 void testPtr(Player p){	
 	for(int i=0;i < 16 ;i++) cout << p.ptr[i] <<"\n";

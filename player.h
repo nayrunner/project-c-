@@ -2,6 +2,7 @@
 #include<string>
 #include<cstring>
 #include<vector>
+#include<cstdlib>
 
 using namespace std;
 
@@ -9,12 +10,15 @@ class Player{
 	public:
 		int number;
 		vector<int*> ptr;
+		
 		Player(int);
+		
 };
 
 Player::Player(int n){
 	number = n; 
 }
+
 
 //bool checkWhoPieces()
 
