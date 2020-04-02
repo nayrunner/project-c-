@@ -1,6 +1,5 @@
 #include"player.h"
-#include"checkmove.h"
-
+// #include"checkmove.h"
 using namespace std;
 
 void makeLine();
@@ -9,7 +8,6 @@ void drawBoard(int [][8]);
 char NtoP(int);
 bool checkIsLegit(string);
 void inputCommand(Player,bool &,int [][8]);
-
 
 void testPtr(Player);	//! DebugFunction NOT-IN-FINAL-VERSION
 void testAddress(int [][8]); //! DebugFunction NOT-IN-FINAL-VERSION
@@ -156,7 +154,7 @@ void inputCommand(Player x,bool &T,int B[][8]){
 	cout << "[Player " << x.number << "] select your pieces: "; //? input Position
 	cin >> com;
 	if(checkIsLegit(com)){
-		x.checkWhoPieces(com);
+		x.checkWhoPieces(com,B);
 	}
 }
 
