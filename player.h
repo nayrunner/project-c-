@@ -1,9 +1,7 @@
 #include<iostream>
 #include<string>
-#include<cstring>
 #include<vector>
-#include<cstdlib>
-
+#include<string>
 using namespace std;
 
 class Player{

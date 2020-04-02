@@ -1,4 +1,5 @@
 #include"player.h"
+
 using namespace std;
 
 void makeLine();
@@ -65,7 +66,6 @@ int main(){
 	
 	//testAddress(board); //debugFunc
 	//testPtr(p1); //debugFunc
-	
 	bool Turn = true; //TODO if false=player2,true=player1
 	while(true){
 		drawBoard(board);
@@ -130,21 +130,25 @@ void inputCommand(Player x){
 	string com;
 	cout << "[Player " << x.number << "] select your pieces: "; //? input Position
 	cin >> com;
+	checkIsLegit(com);
 	cout << "\n";	
 }
 
 bool checkIsLegit(string s){
 	if(s.size() == 2){
 		int temp = int(toupper(s[0]));
-		if(temp > 64 && temp < 73){
-			if(stoi(s[1]) > 0 && stoi(s[1]) < 9){
+		int temp2 = int(s[1]);
+		// cout << temp << " " << temp2 <<"\n";
+		if(temp >= 65 && temp <= 72){ //? ASCII A = 65 ,H = 72
+			if(temp2 >= 49 && temp2 <= 56){ //? ASCII 1 = 49, 8 = 56
+				//cout << "VERY NOICE\n";
 				return true;
 			}else{
-				cout << "Invalid Position\n";
+				cout << "Invalid Position.\n";
 				return false;
 			}
 		}else{
-			cout << "Invalid Input.\n";
+			cout << "Invalid Position.\n";
 			return false;
 		}
 	}else{
