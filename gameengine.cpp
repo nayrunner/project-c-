@@ -7,7 +7,7 @@ void insertPiece(int [][8]);
 void drawBoard(int [][8]);
 char NtoP(int);
 bool checkIsLegit(string);
-void inputCommand(Player,bool &,int [][8]);
+bool inputCommandOne(Player,int [][8]);
 
 void testPtr(Player);	//! DebugFunction NOT-IN-FINAL-VERSION
 void testAddress(int [][8]); //! DebugFunction NOT-IN-FINAL-VERSION
@@ -70,9 +70,11 @@ int main(){
 	while(true){
 		drawBoard(board);
 		if(Turn){ //player1
-			inputCommand(p1,Turn,board);
+			if(inputCommandOne(p1,board)){
+				inputCommandTwo
+			};
 		}else{ //player2
-			inputCommand(p2,Turn,board);
+			inputCommandOne(p2,board);
 		}
 	}
 	
@@ -149,13 +151,14 @@ bool checkIsLegit(string s){
 	}
 }
 
-void inputCommand(Player x,bool &T,int B[][8]){
+bool inputCommandOne(Player x,int B[][8]){
 	string com;
 	cout << "[Player " << x.number << "] select your pieces: "; //? input Position
 	cin >> com;
 	if(checkIsLegit(com)){
-		x.checkWhoPieces(com,B);
-	}
+		if(x.checkWhoPieces(com,B)) return true;
+		else return false;
+	}else return false;
 }
 
 

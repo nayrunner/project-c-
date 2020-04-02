@@ -27,10 +27,10 @@ bool Player::checkWhoPieces(string C,int B[][8]){ //A-H [][0-7], 1-8 [7-0][]
 	vector<int*>::iterator it; 
 	it = find(ptr.begin(),ptr.end(),P);
 	if (it != ptr.end()){
-    	cout << "Element found in myvector: " << *it << "\n"; //? test
+    	//cout << "Element found in myvector: " << *it << "\n"; //? test
     	return true;
 	}else{
-    	cout << "Element not found in myvector\n";//? test 
+    	//cout << "Element not found in myvector\n";//? test
 		return false;
 	} 
 	
