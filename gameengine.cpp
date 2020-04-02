@@ -78,7 +78,7 @@ int main(){
 	
 }
 
-/* function */ 
+/* function */
 
 void makeLine(){
 		cout << "   =========================================\n";
