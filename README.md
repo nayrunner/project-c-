@@ -6,6 +6,6 @@
 
 example: https://github.com/jordancunningham/Chess
          
-         https://youtu.be/_4EuZI8Q8cs
+         https://www.youtube.com/watch?v=_4EuZI8Q8cs
 
 3 Days left
