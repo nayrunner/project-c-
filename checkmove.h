@@ -70,7 +70,31 @@ bool Player::checkmove(string move,string com,int pieces){
         }else{return false;}
     }
 
+    //king
+    if(pieces == 5){
+        if( move[0] == com[0] || move[0] == com[0]+1 || move[0] == com[0]-1){
+            if( move[1] == com[1] || move[1] == com[1]+1 || move[1] == com[1]-1){return true;}
+            else{return false;}
+        }else{return false;}
+    }
+    if(pieces == -5){
+        if( move[0] == com[0] || move[0] == com[0]+1 || move[0] == com[0]-1){
+            if( move[1] == com[1] || move[1] == com[1]+1 || move[1] == com[1]-1){return true;}
+            else{return false;}
+        }else{return false;}
+    }
 
-	
-
+    //pawn
+    if(pieces == 6){
+        if(move[0] == com[0]){
+            if(move[1] == com[1]-1) return true;
+            else return false;
+        }else{return false;}
+    }
+    if(pieces == -6){
+        if(move[0] == com[0]){
+            if(move[1] == com[1]+1) return true;
+            else return false;
+        }else{return false;}
+    }
 }
