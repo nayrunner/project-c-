@@ -161,6 +161,7 @@ void inputCommand(Player x,int B[][8],bool &T){
 	cin >> move;
 	toupper(move[0]);
 	toupper(com[0]);
+	cout<<com[0]<<abs(com[1]-56)<<endl;
 	if( x.checkmove(move,com,B[com[0]-65][abs(com[1]-56)]) == false){cout << "Invalid Position.\n";}
 }
 
