@@ -97,11 +97,7 @@ bool Player::checkmove(string move,string com,int pieces){
         }else{return false;}
     }
 
-<<<<<<< HEAD
     //* Flipped F (เบี้ยหงาย)
-=======
-    //pawn flip
->>>>>>> 83ccf5292311583ff0cb60c5f2faa996680e827c
     if(pieces == 7){
         if( move[0] == com[0]+1 || move[0] == com[0]-1 ){
             if( move[1] == com[1]+1 || move[1] == com[1]-1){return true;}
