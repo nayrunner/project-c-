@@ -8,6 +8,8 @@ https://youtu.be/_4EuZI8Q8cs
 
 http://www.cplusplus.com/reference/algorithm/find/
 
+https://gist.github.com/geocachecs/d8d2f402b0843231231b
+
 7 Days left
 
 
