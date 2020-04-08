@@ -162,16 +162,14 @@ void inputCommand(Player &P,int B[][8],bool &T){
 			string move;
 			cout << "[Player " << P.number << "] make your move: ";//? input move position
 			cin >> move; //TODO 2nd InputCommand
-			toupper(move[0]);
-			toupper(com[0]);
-			cout<<com[0]<<abs(com[1]-56)<<endl;
-			Move(com,move,P,B);
-			/*if( x.checkmove(move,com,B[com[0]-65][abs(com[1]-56)]) == false) cout << "Invalid Position(cin2).\n";
+			int row = (TranslateCom(com)/10)-1;
+			int columb = TranslateCom(com)%10;
+			if(P.checkmove(move,com,B[row][columb]) == false) cout << "Invalid Position(cin2).\n";
 			else{
-				
-			}*/
+				Move(com,move,P,B);
+			}
 		}else{
-			cout << "Wrong Piece Position\n";
+			cout << "This isn't your pieces!'\n";
 		}
 	}
 	
