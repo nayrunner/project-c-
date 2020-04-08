@@ -6,9 +6,9 @@ void insertPiece(int [][8]);
 void drawBoard(int [][8]);
 char NtoP(int);
 bool checkIsLegit(string);
-void inputCommand(Player,int [][8],bool &);
+void inputCommand(Player &,int [][8],bool &);
 int TranslateCom(string);
-void Move(string,string,Player,int [][8]);
+void Move(string,string,Player &,int [][8]);
 
 void testPtr(Player);	//! DebugFunction NOT-IN-FINAL-VERSION
 void testAddress(int [][8]); //! DebugFunction NOT-IN-FINAL-VERSION
@@ -153,23 +153,23 @@ bool checkIsLegit(string s){
 	}
 }
 
-void inputCommand(Player x,int B[][8],bool &T){
+void inputCommand(Player &P,int B[][8],bool &T){ 
 	string com;
-	cout << "[Player " << x.number << "] select your pieces: "; //? input Position 
+	cout << "[Player " << P.number << "] select your pieces: "; //? input Position 
 	cin >> com; //TODO 1st InputCommand
 	if(checkIsLegit(com)){ //? if checkIsLegit True CheckPiece next
-		if(x.checkWhoPieces(com,B)){	
+		if(P.checkWhoPieces(com,B)){	
 			string move;
-			cout << "[Player " << x.number << "] make your move: ";//? input move position
+			cout << "[Player " << P.number << "] make your move: ";//? input move position
 			cin >> move; //TODO 2nd InputCommand
 			toupper(move[0]);
 			toupper(com[0]);
 			cout<<com[0]<<abs(com[1]-56)<<endl;
-			Move(com,move,x,B);
-			//if( x.checkmove(move,com,B[com[0]-65][abs(com[1]-56)]) == false) cout << "Invalid Position.\n";
-			//else{
+			Move(com,move,P,B);
+			/*if( x.checkmove(move,com,B[com[0]-65][abs(com[1]-56)]) == false) cout << "Invalid Position(cin2).\n";
+			else{
 				
-			//}
+			}*/
 		}else{
 			cout << "Wrong Piece Position\n";
 		}
@@ -185,14 +185,21 @@ int TranslateCom(string C){ //TODO change Position's string to Int
 	return z;
 }
 
-void Move(string com,string move,Player P,int B[][8]){
+void Move(string com,string move,Player &P,int B[][8]){
 	int PosA = TranslateCom(com); 
 	int PosB = TranslateCom(move);
+	int j;
 	int *ptrA = &B[(PosA/10)-1][PosA%10];
 	int *ptrB = &B[(PosB/10)-1][PosB%10];
 	int temp = *ptrA;
+	for(int i = 0;i < P.ptr.size();i++){
+		if(ptrA == P.ptr[i]){
+			j = i;
+		}
 	*ptrA = 0;
 	*ptrB = temp; 
+	P.ptr[j] = ptrB;
+	}
 }
 
 
