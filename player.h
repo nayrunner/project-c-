@@ -123,13 +123,13 @@ bool Player::checkmove(string move,string com,int pieces){
     //*Pawn P (เบี้ย)
     if(pieces == 6){
         if(move[0] == com[0]){
-            if(move[1] == com[1]-1) return true;
+            if(move[1] == com[1]+1) return true;
             else return false;
         }else{return false;}
     }
     if(pieces == -6){
         if(move[0] == com[0]){
-            if(move[1] == com[1]+1) return true;
+            if(move[1] == com[1]-1) return true;
             else return false;
         }else{return false;}
     }
