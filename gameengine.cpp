@@ -134,10 +134,8 @@ bool checkIsLegit(string s){
 	if(s.size() == 2){
 		int temp = int(toupper(s[0]));
 		int temp2 = int(s[1]);
-		// cout << temp << " " << temp2 <<"\n";
 		if(temp >= 65 && temp <= 72){ //? ASCII A = 65 ,H = 72
 			if(temp2 >= 49 && temp2 <= 56){ //? ASCII 1 = 49, 8 = 56
-				//cout << "VERY NOICE\n";
 				return true;
 			}else{
 				cout << "Invalid Position.\n";
@@ -160,19 +158,23 @@ void inputCommand(Player &P,int B[][8],bool &T){
 	if(checkIsLegit(com)){ //? if checkIsLegit True CheckPiece next
 		if(P.checkWhoPieces(com,B)){	
 			string move;
-			cout << "[Player " << P.number << "] make your move: ";//? input move position
-			cin >> move; //TODO 2nd InputCommand
+			bool CP = true; //? CP = checkpoint
+			while(CP == true){
+				cout << "[Player " << P.number << "] Cancel[C]/Make your move: ";//? input move position
+				cin >> move; //TODO 2nd InputCommand
+				if(checkIsLegit(move) == true || move == "C") CP = false;
+			}
 			int row = (TranslateCom(com)/10)-1;
 			int columb = TranslateCom(com)%10;
-			if(P.checkmove(move,com,B[row][columb]) == false) cout << "Invalid Position(cin2).\n";
+			
+			if(P.checkmove(move,com,B[row][columb]) == false) cout << "Invalid Move.\n";
 			else{
 				Move(com,move,P,B);
-			}
+			} 
 		}else{
 			cout << "This isn't your pieces!'\n";
 		}
 	}
-	
 }
 
 int TranslateCom(string C){ //TODO change Position's string to Int
