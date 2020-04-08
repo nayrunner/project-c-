@@ -50,7 +50,7 @@ bool Player::checkmove(string move,string com,int pieces){
 		else{if(move[1] == com[1]){return true;}
 		     else {return false;}	}	}
 	
-	//*Knight N (ม้า) (ที่ไม่เอาไว้ดูด)
+	//*Knight N (ม้า)
 	if (pieces == 2){
 		if( move[0]== (com[0]-1) && move[1] == (com[1]-2) ){return true;}
 		else{if( move[0]== (com[0]-1) && move[1] == (com[1]+2) ){return true;}
