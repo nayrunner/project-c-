@@ -8,16 +8,15 @@ char NtoP(int);
 bool checkIsLegit(string);
 void inputCommand(Player,int [][8],bool &);
 int TranslateCom(string);
+void Move(string,string,Player,int [][8]);
 
 void testPtr(Player);	//! DebugFunction NOT-IN-FINAL-VERSION
 void testAddress(int [][8]); //! DebugFunction NOT-IN-FINAL-VERSION
 
-void move(string com,string move,Player P,int B[][8]){
-	int PosA = TranslateCom(com);
-	int PosB = TranslateCom(move);
-}
 
-int main(){
+	
+int main()
+{
 	int board[8][8] = {
 //!	     A  B  C  D  E  F  G  H  
 	/*   0  1  2  3  4  5  6  7  */
@@ -166,10 +165,11 @@ void inputCommand(Player x,int B[][8],bool &T){
 			toupper(move[0]);
 			toupper(com[0]);
 			cout<<com[0]<<abs(com[1]-56)<<endl;
-			if( x.checkmove(move,com,B[com[0]-65][abs(com[1]-56)]) == false) cout << "Invalid Position.\n";
-			else{
-				//move();
-			}
+			Move(com,move,x,B);
+			//if( x.checkmove(move,com,B[com[0]-65][abs(com[1]-56)]) == false) cout << "Invalid Position.\n";
+			//else{
+				
+			//}
 		}else{
 			cout << "Wrong Piece Position\n";
 		}
@@ -178,11 +178,21 @@ void inputCommand(Player x,int B[][8],bool &T){
 }
 
 int TranslateCom(string C){ //TODO change Position's string to Int
-	int com_0,com_1;
-	com_0 = int(toupper(C[0]))-65;
-	com_1 = (49-int(C[1]))+7;
-	int z = (com_0*10)+com_1;
+	int com_0,com_1; //! com_1 is ROW , com_0 is COLUMB
+	com_0 = int(toupper(C[0]))-65; 
+	com_1 = ((49-int(C[1]))+7)+1; //! com_1 need to +1 becuz if It's 0,Return Value error
+	int z = (com_1*10)+com_0;
 	return z;
+}
+
+void Move(string com,string move,Player P,int B[][8]){
+	int PosA = TranslateCom(com); 
+	int PosB = TranslateCom(move);
+	int *ptrA = &B[(PosA/10)-1][PosA%10];
+	int *ptrB = &B[(PosB/10)-1][PosB%10];
+	int temp = *ptrA;
+	*ptrA = 0;
+	*ptrB = temp; 
 }
 
 
