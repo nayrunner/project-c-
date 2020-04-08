@@ -167,13 +167,15 @@ void inputCommand(Player &P,int B[][8],bool &T){
 			int row = (TranslateCom(com)/10)-1;
 			int columb = TranslateCom(com)%10;
 			
-			if(P.checkmove(move,com,B[row][columb]) == false) cout << "Invalid Move.\n";
+			if(P.checkmove(move,com,B[row][columb]) == false || P.checkblock(com,move,B[row][columb],B)== false) cout << "Invalid Move.\n";
 			else{
 				Move(com,move,P,B);
-			} 
+			}
 		}else{
 			cout << "This isn't your pieces!'\n";
 		}
+
+		
 	}
 }
 
