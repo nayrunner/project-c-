@@ -9,12 +9,13 @@ bool checkIsLegit(string);
 void inputCommand(Player &,Player &,int [][8],bool &);
 int TranslateCom(string);
 void Move(string,string,Player &,Player &,int [][8]);
+bool isLose(Player);
 
 void testPtr(Player);	//! DebugFunction NOT-IN-FINAL-VERSION
 void testAddress(int [][8]); //! DebugFunction NOT-IN-FINAL-VERSION
 
 
-	
+
 int main()
 {
 	int board[8][8] = {
@@ -74,8 +75,16 @@ int main()
 	while(true){
 		drawBoard(board);
 		if(Turn){ //player1
+			if(isLose(p1)) {
+				break;
+				cout << "Player 2 WINS !!!\n";	
+			}
 			inputCommand(p1,p2,board,Turn);
 		}else{ //player2
+			if(isLose(p2)){
+				break;
+				cout << "Player 1 WINS !!!\n";
+			}
 			inputCommand(p2,p1,board,Turn);
 		}
 	}
@@ -218,7 +227,12 @@ void Move(string com,string move,Player &P,Player &O,int B[][8]){  //TODO P = Pl
 	P.ptr[j] = ptrB;
 }
 
-
+bool isLose(Player P){
+	for(int i = 0;i < P.ptr.size();i++){
+		if(5 == abs(*P.ptr[i])) return false;
+	}
+	return true;
+}
 
 /*! DebugFunction NOT-IN-FINAL-VERSION */
 void testPtr(Player p){	

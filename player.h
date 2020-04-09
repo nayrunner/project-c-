@@ -2,6 +2,7 @@
 #include<string>
 #include<vector>
 #include<algorithm>
+#include<cmath>
 
 using namespace std;
 
@@ -35,7 +36,7 @@ bool Player::checkWhoPieces(string C,int B[][8]){ //A-H [][0-7], 1-8 [7-0][]
 
 
 bool Player::checkmove(string move,string com,int pieces){
-   //cout<<pieces<<"\nmove[0] is "<<move[0]<<"\ncom[0] is "<<com[0]<<"\nmove[1] is "<<move[1]<<"\ncom[1] is "<<com[1]<<"\n";//
+//   cout<<pieces<<"\nmove[0] is "<<move[0]<<"\ncom[0] is "<<com[0]<<"\nmove[1] is "<<move[1]<<"\ncom[1] is "<<com[1]<<"\n";
 
     if(move == com){return false;}
     // move(0) = แถว , move(1)= บรรทัด
