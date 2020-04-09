@@ -10,6 +10,8 @@ http://www.cplusplus.com/reference/algorithm/find/
 
 https://gist.github.com/geocachecs/d8d2f402b0843231231b
 
-5 Days left
+https://youtu.be/SXuhnDvKct0 พื้นฐานหมากรุกไทย
+
+4 Days left
 
 
