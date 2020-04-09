@@ -6,9 +6,9 @@ void insertPiece(int [][8]);
 void drawBoard(int [][8]);
 char NtoP(int);
 bool checkIsLegit(string);
-void inputCommand(Player &,int [][8],bool &);
+void inputCommand(Player &,Player &,int [][8],bool &);
 int TranslateCom(string);
-void Move(string,string,Player &,int [][8]);
+void Move(string,string,Player &,Player &,int [][8]);
 
 void testPtr(Player);	//! DebugFunction NOT-IN-FINAL-VERSION
 void testAddress(int [][8]); //! DebugFunction NOT-IN-FINAL-VERSION
@@ -74,9 +74,9 @@ int main()
 	while(true){
 		drawBoard(board);
 		if(Turn){ //player1
-			inputCommand(p1,board,Turn);
+			inputCommand(p1,p2,board,Turn);
 		}else{ //player2
-			inputCommand(p2,board,Turn);
+			inputCommand(p2,p1,board,Turn);
 		}
 	}
 	
@@ -151,7 +151,7 @@ bool checkIsLegit(string s){
 	}
 }
 
-void inputCommand(Player &P,int B[][8],bool &T){ 
+void inputCommand(Player &P,Player &O,int B[][8],bool &T){ 
 	string com;
 	cout << "[Player " << P.number << "] select your pieces: "; //? input Position 
 	cin >> com; //TODO 1st InputCommand
@@ -167,15 +167,16 @@ void inputCommand(Player &P,int B[][8],bool &T){
 			int row = (TranslateCom(com)/10)-1;
 			int columb = TranslateCom(com)%10;
 			
-			if(P.checkmove(move,com,B[row][columb]) == false || P.checkblock(com,move,B[row][columb],B)== false) cout << "Invalid Move.\n";
+			if(P.checkmove(move,com,B[row][columb]) == false ) cout << "Invalid Move.\n";
 			else{
-				Move(com,move,P,B);
+				if(P.checkblock(com,move,B[row][columb],B)== false) cout << "Blocked\n";
+				else{
+					Move(com,move,P,O,B);
+				}
 			}
 		}else{
 			cout << "This isn't your pieces!'\n";
 		}
-
-		
 	}
 }
 
@@ -187,22 +188,28 @@ int TranslateCom(string C){ //TODO change Position's string to Int
 	return z;
 }
 
-void Move(string com,string move,Player &P,int B[][8]){
+void Move(string com,string move,Player &P,Player &O,int B[][8]){  //TODO P = Player , O = Opponent
 	int PosA = TranslateCom(com); 
 	int PosB = TranslateCom(move);
-	int j;
+	int j,k;
 	int *ptrA = &B[(PosA/10)-1][PosA%10];
 	int *ptrB = &B[(PosB/10)-1][PosB%10];
+	if(*ptrB != 0){
+		for(int i = 0;i < O.ptr.size();i++){
+			if(ptrB == O.ptr[i]) k = i;
+		}
+		O.ptr.erase(O.ptr.begin()+k);
+		//killfeed add
+	}
 	int temp = *ptrA;
 	for(int i = 0;i < P.ptr.size();i++){
-		if(ptrA == P.ptr[i]){
-			j = i;
-		}
+		if(ptrA == P.ptr[i]) j = i;
+	}
 	*ptrA = 0;
 	*ptrB = temp; 
 	P.ptr[j] = ptrB;
-	}
 }
+
 
 
 /*! DebugFunction NOT-IN-FINAL-VERSION */
