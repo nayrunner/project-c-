@@ -180,7 +180,7 @@ void inputCommand(Player &P,Player &O,int B[][8],bool &T){
 			int row = (TranslateCom(com)/10)-1;
 			int columb = TranslateCom(com)%10;
 			
-			if(P.checkmove(move,com,B[row][columb]) == false) {
+			if(P.checkmove(move,com,B[row][columb],B) == false) {
 				if(move != "C") cout << "Invalid Move.\n";
 			}
 			else{
@@ -188,7 +188,7 @@ void inputCommand(Player &P,Player &O,int B[][8],bool &T){
 				else{
 					Move(com,move,P,O,B);
 					if(P.number == 1) T = false;
-					else T = true;
+					else T = true; 
 				}
 			}
 		}else{

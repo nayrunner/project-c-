@@ -13,8 +13,8 @@ class Player{
 		
 		Player(int);
 		bool checkWhoPieces(string,int [][8]);
-		bool checkmove(string,string,int);
-        bool checkblock(string,string,int ,int [][8]);
+		bool checkmove(string,string,int,int [][8]);
+        bool checkblock(string,string,int,int [][8]);
 };
 
 Player::Player(int n){
@@ -35,7 +35,7 @@ bool Player::checkWhoPieces(string C,int B[][8]){ //A-H [][0-7], 1-8 [7-0][]
 }
 
 
-bool Player::checkmove(string move,string com,int pieces){
+bool Player::checkmove(string move,string com,int pieces,int B[][8]){
 //   cout<<pieces<<"\nmove[0] is "<<move[0]<<"\ncom[0] is "<<com[0]<<"\nmove[1] is "<<move[1]<<"\ncom[1] is "<<com[1]<<"\n";
 
     if(move == com){return false;}
@@ -205,16 +205,33 @@ if(pieces == 3){ //Player 1
 ||   ||   ||   ||   ||   || +2
 ===========================
 */
-    if(pieces == 6){
+//? com[0] = columb , com[1] = row
+int R = (49-int(com[1]))+7;
+int CL = int(toupper(com[0]))-65;
+cout << R << " " << CL << "\n";
+    if(pieces == 6){ //? Player 1
         if(move[0] == com[0]){
-            if(move[1] == com[1]+1) return true;
+            if(move[1] == com[1]+1 && B[R-1][CL] == 0) return true;
             else return false;
-        }else{return false;}
+    	}
+        else if(move[0] == com[0]-1){
+        	if(move[1] == com[1]+1 && B[R-1][CL-1] < 0) return true;
+		}
+		else if(move[0] == com[0]+1){
+        	if(move[1] == com[1]+1 && B[R-1][CL+1] < 0) return true;
+		}
+        else{return false;}
     }
-    if(pieces == -6){
+    if(pieces == -6){ //? Player 2
         if(move[0] == com[0]){
-            if(move[1] == com[1]-1) return true;
+            if(move[1] == com[1]-1 && B[R+1][CL] == 0) return true;
             else return false;
+    	}
+        else if(move[0] == com[0]-1){
+        	if(move[1] == com[1]-1 && B[R+1][CL-1] > 0) return true;
+		}
+		else if(move[0] == com[0]+1){
+        	if(move[1] == com[1]-1 && B[R+1][CL+1] > 0) return true;
         }else{return false;}
     }
 
