@@ -145,7 +145,11 @@ bool checkIsLegit(string s){
 			cout << "Invalid Position.\n";
 			return false;
 		}
-	}else{
+	}else if(s == "C"){
+		cout << "Cancelled.\n";
+		return false;
+	}
+	else{
 		cout << "Invalid Input.\n";
 		return false;
 	}
@@ -167,11 +171,15 @@ void inputCommand(Player &P,Player &O,int B[][8],bool &T){
 			int row = (TranslateCom(com)/10)-1;
 			int columb = TranslateCom(com)%10;
 			
-			if(P.checkmove(move,com,B[row][columb]) == false ) cout << "Invalid Move.\n";
+			if(P.checkmove(move,com,B[row][columb]) == false) {
+				if(move != "C") cout << "Invalid Move.\n";
+			}
 			else{
 				if(P.checkblock(com,move,B[row][columb],B)== false) cout << "Blocked\n";
 				else{
 					Move(com,move,P,O,B);
+					if(P.number == 1) T = false;
+					else T = true;
 				}
 			}
 		}else{
@@ -229,8 +237,6 @@ void testAddress(int B[][8]){
 	}
 	cout << "-------------------------------------------------------------------\n";
 }
-
-
 
 /*
 	cout << "\n";
