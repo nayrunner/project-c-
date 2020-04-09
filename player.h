@@ -208,7 +208,6 @@ if(pieces == 3){ //Player 1
 //? com[0] = columb , com[1] = row
 int R = (49-int(com[1]))+7;
 int CL = int(toupper(com[0]))-65;
-cout << R << " " << CL << "\n";
     if(pieces == 6){ //? Player 1
         if(move[0] == com[0]){
             if(move[1] == com[1]+1 && B[R-1][CL] == 0) return true;
