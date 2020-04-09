@@ -27,10 +27,8 @@ bool Player::checkWhoPieces(string C,int B[][8]){ //A-H [][0-7], 1-8 [7-0][]
 	vector<int*>::iterator it; 
 	it = find(ptr.begin(),ptr.end(),P);
 	if (it != ptr.end()){
-    	//cout << "Element found in myvector: " << **it << "\n"; //? test
     	return true;
 	}else{
-    	//cout << "Element not found in myvector\n";//? test
 		return false;
 	} 	
 }
@@ -41,10 +39,24 @@ bool Player::checkmove(string move,string com,int pieces){
     if(move == com){return false;}
     // move(0) = แถว , move(1)= บรรทัด
 
-	//*Rook R (เรือ)
+	//* Rook R (เรือ)
+/*
+   -2   -1   0    +1   +2
+===========================
+||   ||   || * ||   ||   || -2
+===========================
+||   ||   || * ||   ||   || -1
+===========================
+|| * || * || N || * || * ||  0
+===========================
+||   ||   || * ||   ||   || +1
+===========================
+||   ||   || * ||   ||   || +2
+===========================
+*/
 	if(pieces == 1){
-		if(move[0]== com[0]){return true;}
-		else{if(move[1] == com[1]){return true;}
+		if(move[0]== com[0]){return true;} //? if same columb = true
+		else{if(move[1] == com[1]){return true;} // if? not same columb but same row = true
 		     else {return false;}	}	}
     if(pieces == -1){
 		if(move[0]== com[0]){return true;}
@@ -52,15 +64,30 @@ bool Player::checkmove(string move,string com,int pieces){
 		     else {return false;}	}	}
 	
 	//*Knight N (ม้า)
+/*
+   -2   -1   0    +1   +2
+===========================
+||   || 1 ||   || 5 ||   || -2
+===========================
+|| 3 ||   ||   ||   || 7 || -1
+===========================
+||   ||   || N ||   ||   ||  0
+===========================
+|| 4 ||   ||   ||   || 8 || +1
+===========================
+||   || 2 ||   || 6 ||   || +2
+===========================
+*/
+//? com[0] = columb , com[1] = row
 	if (pieces == 2){
-		if( move[0]== (com[0]-1) && move[1] == (com[1]-2) ){return true;}
-		else{if( move[0]== (com[0]-1) && move[1] == (com[1]+2) ){return true;}
-		     else{if( move[0]== (com[0]-2) && move[1] == (com[1]-1) ){return true;}
-			      else{if( move[0]== (com[0]-2) && move[1] == (com[1]+1) ){return true;}
-				       else{if( move[0]== (com[0]+1) && move[1] == (com[1]-2) ){return true;}
-					        else{if( move[0]== (com[0]+1) && move[1] == (com[1]+2) ){return true;}
-							     else{if( move[0]== (com[0]+2) && move[1] == (com[1]-1) ){return true;}
-								      else{if( move[0]== (com[0]+2) && move[1] == (com[1]+1) ){return true;}
+		if( move[0]== (com[0]-1) && move[1] == (com[1]-2) ){return true;}  //pos 1
+		else{if( move[0]== (com[0]-1) && move[1] == (com[1]+2) ){return true;} //pos 2
+		     else{if( move[0]== (com[0]-2) && move[1] == (com[1]-1) ){return true;} //pos 3
+			      else{if( move[0]== (com[0]-2) && move[1] == (com[1]+1) ){return true;} //pos 4
+				       else{if( move[0]== (com[0]+1) && move[1] == (com[1]-2) ){return true;} //pos 5
+					        else{if( move[0]== (com[0]+1) && move[1] == (com[1]+2) ){return true;}//pos 6
+							     else{if( move[0]== (com[0]+2) && move[1] == (com[1]-1) ){return true;}//pos 7
+								      else{if( move[0]== (com[0]+2) && move[1] == (com[1]+1) ){return true;}//pos 8
 									       else{return false;}}}}}}}}
 	}
     if (pieces == -2){
@@ -76,14 +103,29 @@ bool Player::checkmove(string move,string com,int pieces){
 	}
     
     //*Bishop B (โคน)
-    if(pieces == 3){
+/*
+   -2   -1   0    +1   +2
+===========================
+||   ||   ||   ||   ||   || -2
+===========================
+||   || * || * || * ||   || -1
+===========================
+||   ||   || B ||   ||   ||  0
+===========================
+||   || * ||   || * ||   || +1
+===========================
+||   ||   ||   ||   ||   || +2
+===========================
+*/
+
+    if(pieces == 3){ //Player 1
         if( move[1] == (com[1]-1) && move[0] <= (com[0]+1) && move[0] >= (com[0]-1) ){return true;}
         else{
             if(move[1] == (com[1]+1) && move[0] <= (com[0]+1) && move[0] >= (com[0]-1) && move[0] != com[0] ){return true;}
             else{return false;}
         }
     }   
-    if(pieces == -3){
+    if(pieces == -3){ //Player 2
         if( move[1] == (com[1]+1) && move[0] <= (com[0]+1) && move[0] >= (com[0]-1) ){return true;}
         else{
             if(move[1] == (com[1]-1) && move[0] <= (com[0]+1) && move[0] >= (com[0]-1) && move[0] != com[0] ){return true;}
