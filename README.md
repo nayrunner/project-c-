@@ -12,6 +12,8 @@ https://gist.github.com/geocachecs/d8d2f402b0843231231b
 
 https://youtu.be/SXuhnDvKct0 พื้นฐานหมากรุกไทย
 
+https://docs.microsoft.com/en-us/windows/console/setconsolewindowinfo?redirectedfrom=MSDN SetConsoleWindowInfo
+
 4 Days left
 
 
