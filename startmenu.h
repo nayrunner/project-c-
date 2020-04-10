@@ -17,7 +17,7 @@ void grandopening(){
     cout<<"CCCCCCCC   HH    HH   EE               SS         SS\n";
     cout<<"CCCCCCCC   HH    HH   EEEEEEEE   SSSSSSSS   SSSSSSSS\n\n";
     cout<<"====================================================\n\n";
-    cout<<"        [P] Play [H] HowToPlay [E] Exit\n\n";
+    cout<<"              [P] Play [H] HowToPlay\n\n";
     cout<<"====================================================\n\n";
 
 

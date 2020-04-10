@@ -1,4 +1,6 @@
 #include"player.h"
+#include"startmenu.h"
+#include"how2play.h"
 using namespace std;
 
 void makeLine();
@@ -17,7 +19,24 @@ void testAddress(int [][8]); //! DebugFunction NOT-IN-FINAL-VERSION
 
 
 int main()
-{
+{   //start manu
+    char command;
+    grandopening();
+    while(true){
+        cout << "type your command: ";
+        cin >> command;
+        command = toupper(command);
+        //if ('P')
+        if(command == 'P'){
+			cout<<"\n====================================================\n\n";
+            break;
+        }
+        //else if('H')
+        if(command == 'H'){tutorial();
+        grandopening();}
+    }
+    //game start
+
 	int board[8][8] = {
 //!	     A  B  C  D  E  F  G  H  
 	/*   0  1  2  3  4  5  6  7  */
