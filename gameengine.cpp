@@ -91,7 +91,7 @@ int main()
 	
 }
 
-/* Function */
+//* Function *//
 
 void makeLine(){
 		cout << "   =========================================\n";
@@ -208,6 +208,7 @@ int TranslateCom(string C){ //TODO change Position's string to Int
 void Move(string com,string move,Player &P,Player &O,int B[][8]){  //TODO P = Player , O = Opponent
 	int PosA = TranslateCom(com); 
 	int PosB = TranslateCom(move);
+	int ROW_PosB = (PosB/10)-1;
 	int j,k;
 	int *ptrA = &B[(PosA/10)-1][PosA%10];
 	int *ptrB = &B[(PosB/10)-1][PosB%10];
@@ -224,6 +225,12 @@ void Move(string com,string move,Player &P,Player &O,int B[][8]){  //TODO P = Pl
 	}
 	*ptrA = 0;
 	*ptrB = temp; 
+	if(temp == 6 && ROW_PosB == 2){
+		*ptrB = 7;
+	}
+	if(temp == -6 && ROW_PosB == 5){
+		*ptrB = -7;
+	}
 	P.ptr[j] = ptrB;
 }
 
@@ -234,7 +241,7 @@ bool isLose(Player P){
 	return true;
 }
 
-/*! DebugFunction NOT-IN-FINAL-VERSION */
+//*! DebugFunction NOT-IN-FINAL-VERSION *//
 void testPtr(Player p){	
 	for(int i=0;i < 16 ;i++) cout << p.ptr[i] <<"\n";
 	cout << "Player " << p.number << " Pieces\n";
