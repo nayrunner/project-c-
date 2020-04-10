@@ -265,7 +265,7 @@ int CL = int(toupper(com[0]))-65;
 
 bool Player::checkblock(string com,string move,int pieces,int B[][8]){
     //for rook//
-    if(pieces==1){
+    if(pieces==1 || pieces==-1){
     if(move[1]>com[1]){
     for(int i = 0;i<move[1]-com[1];i++){
     int x = int(toupper(move[0]))-65 ;
