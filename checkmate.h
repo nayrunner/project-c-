@@ -1,14 +1,20 @@
-int x = int(toupper(move[0]))-65 ;
-	int y = (49-int(move[1]))+7;
-	int *board = &B[y][x];
-	vector<int*>::iterator check; 
-	check = find(ptr.begin(),ptr.end(),board);
-	if (*check != board || *check == 0){
-    	//cout << "Element found in myvector: " << **check << "\n"; //? test
-    	return true;
-	}else{
-    	//cout << "Element not found in myvector"<< zptr.end() << "\n";//? test
-		return false;
-	} 
+bool checkmate(int P,int b[][8]){
+	if(P==1){
+	for (int columb = 0; columb < 8; columb++)
+	{
+		for(int row = 0; row < 8; row++)
+		{
+			//ม้า
+			if(b[row][columb]==2){
+				if( b[row-2][columb-1] == -5 ||  b[row-1][columb-2] == -5 || b[row+2][columb+1] == -5 || b[row+1][columb+2] == -5 || b[row+2][columb-1] == -5 || b[row-1][columb+2] == -5 ||  b[row-2][columb+1] == -5 || b[row+1][columb-2] == -5 ){
+					return false;
+				}
+			}
 
-|| P.checkblock(com,move,B[row][columb],B)== false
+			//เม็ด
+			
+		}
+	}
+	}
+	
+}
