@@ -1,6 +1,7 @@
 #include"player.h"
 #include"startmenu.h"
 #include"how2play.h"
+#include"checkmate.h"
 using namespace std;
 
 void makeLine();
@@ -98,11 +99,17 @@ int main()
 				break;
 				cout << "Player 2 WINS !!!\n";	
 			}
+			if(checkmate(2,board)==false){
+				cout<<"your king can be eaten.\n";
+			}
 			inputCommand(p1,p2,board,Turn);
 		}else{ //player2
 			if(isLose(p2)){
 				break;
 				cout << "Player 1 WINS !!!\n";
+			}
+			if(checkmate(1,board)==false){
+				cout<<"your king can be eaten.\n";
 			}
 			inputCommand(p2,p1,board,Turn);
 		}
