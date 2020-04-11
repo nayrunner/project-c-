@@ -194,6 +194,7 @@ void inputCommand(Player &P,Player &O,int B[][8],bool &T){
 	string com;
 	cout << "[Player " << P.number << "] select your pieces: "; //? input Position 
 	cin >> com; //TODO 1st InputCommand
+	com[0] = toupper(com[0]);
 	if(checkIsLegit(com)){ //? if checkIsLegit True CheckPiece next
 		if(P.checkWhoPieces(com,B)){	
 			string move;
