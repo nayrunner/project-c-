@@ -96,8 +96,8 @@ int main()
 		drawBoard(board);
 		if(Turn){ //player1
 			if(isLose(p1)) {
-				break;
 				cout << "Player 2 WINS !!!\n";	
+				break;
 			}
 			if(checkmate(2,board)==false){
 				cout<<"your king can be eaten.\n";
@@ -105,8 +105,8 @@ int main()
 			inputCommand(p1,p2,board,Turn);
 		}else{ //player2
 			if(isLose(p2)){
-				break;
 				cout << "Player 1 WINS !!!\n";
+				break;
 			}
 			if(checkmate(1,board)==false){
 				cout<<"your king can be eaten.\n";
