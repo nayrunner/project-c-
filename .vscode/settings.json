@@ -4,5 +4,7 @@
         "deque": "cpp",
         "string": "cpp",
         "vector": "cpp"
-    }
+    },
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.runInTerminal": true
 }
