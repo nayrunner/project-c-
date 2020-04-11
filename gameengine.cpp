@@ -24,7 +24,7 @@ int main()
     char command;
     grandopening();
     while(true){
-        cout << "Type your command: ";
+        cout << "type your command: ";
         cin >> command;
         command = toupper(command);
         //if ('P')
@@ -100,7 +100,7 @@ int main()
 				cout << "Player 2 WINS !!!\n";	
 			}
 			if(checkmate(2,board)==false){
-				cout<<"Your king can be eaten.\n";
+				cout<<"your king can be eaten.\n";
 			}
 			inputCommand(p1,p2,board,Turn);
 		}else{ //player2
@@ -109,7 +109,7 @@ int main()
 				cout << "Player 1 WINS !!!\n";
 			}
 			if(checkmate(1,board)==false){
-				cout<<"Your king can be eaten.\n";
+				cout<<"your king can be eaten.\n";
 			}
 			inputCommand(p2,p1,board,Turn);
 		}
@@ -123,7 +123,7 @@ void makeLine(){
 		cout << "   =========================================\n";
 	}
 
-void insertPiece(int B[][8]){ 	//? i is row , j is column
+void insertPiece(int B[][8]){ 	//? i is row , j is columb
 	int count = 8;
 	for(int i = 0; i < 8 ; i++){
 		cout << count;
@@ -180,7 +180,7 @@ bool checkIsLegit(string s){
 			cout << "Invalid Position.\n";
 			return false;
 		}
-	}else if(s == "C"){
+	}else if(s == "C" ){
 		cout << "Cancelled.\n";
 		return false;
 	}
@@ -192,7 +192,7 @@ bool checkIsLegit(string s){
 
 void inputCommand(Player &P,Player &O,int B[][8],bool &T){ 
 	string com;
-	cout << "[Player " << P.number << "] select your piece: "; //? input Position 
+	cout << "[Player " << P.number << "] select your pieces: "; //? input Position 
 	cin >> com; //TODO 1st InputCommand
 	if(checkIsLegit(com)){ //? if checkIsLegit True CheckPiece next
 		if(P.checkWhoPieces(com,B)){	
@@ -201,7 +201,8 @@ void inputCommand(Player &P,Player &O,int B[][8],bool &T){
 			while(CP == true){
 				cout << "[Player " << P.number << "] Cancel[C]/Make your move: ";//? input move position
 				cin >> move; //TODO 2nd InputCommand
-				if(checkIsLegit(move) == true || move == "C") CP = false;
+				move[0] = toupper(move[0]);
+				if(checkIsLegit(move) == true || move == "C" ) CP = false;
 			}
 			int row = (TranslateCom(com)/10)-1;
 			int columb = TranslateCom(com)%10;
