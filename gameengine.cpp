@@ -24,7 +24,7 @@ int main()
     char command;
     grandopening();
     while(true){
-        cout << "type your command: ";
+        cout << "Type your command: ";
         cin >> command;
         command = toupper(command);
         //if ('P')
@@ -100,7 +100,7 @@ int main()
 				cout << "Player 2 WINS !!!\n";	
 			}
 			if(checkmate(2,board)==false){
-				cout<<"your king can be eaten.\n";
+				cout<<"Your king can be eaten.\n";
 			}
 			inputCommand(p1,p2,board,Turn);
 		}else{ //player2
@@ -109,7 +109,7 @@ int main()
 				cout << "Player 1 WINS !!!\n";
 			}
 			if(checkmate(1,board)==false){
-				cout<<"your king can be eaten.\n";
+				cout<<"Your king can be eaten.\n";
 			}
 			inputCommand(p2,p1,board,Turn);
 		}
@@ -123,7 +123,7 @@ void makeLine(){
 		cout << "   =========================================\n";
 	}
 
-void insertPiece(int B[][8]){ 	//? i is row , j is columb
+void insertPiece(int B[][8]){ 	//? i is row , j is column
 	int count = 8;
 	for(int i = 0; i < 8 ; i++){
 		cout << count;
@@ -192,7 +192,7 @@ bool checkIsLegit(string s){
 
 void inputCommand(Player &P,Player &O,int B[][8],bool &T){ 
 	string com;
-	cout << "[Player " << P.number << "] select your pieces: "; //? input Position 
+	cout << "[Player " << P.number << "] select your piece: "; //? input Position 
 	cin >> com; //TODO 1st InputCommand
 	if(checkIsLegit(com)){ //? if checkIsLegit True CheckPiece next
 		if(P.checkWhoPieces(com,B)){	

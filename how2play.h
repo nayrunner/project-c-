@@ -15,7 +15,7 @@ void tutorial(){
     cout<<"_____________________________________________________________________\n\n\n";
 
 while(true){
-    cout<<"which pieces do you want to know its moves? : ";
+    cout<<"Which pieces do you want to know its moves? : ";
     cin>>pieces;
     upperString(pieces);
     cout<<"_____________________________________________________________________\n\n\n";
