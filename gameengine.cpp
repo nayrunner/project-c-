@@ -2,6 +2,7 @@
 #include"startmenu.h"
 #include"how2play.h"
 #include"checkmate.h"
+#include <cstdlib>
 using namespace std;
 
 void makeLine();
@@ -93,6 +94,7 @@ int main()
 	//testPtr(p1); //debugFunc
 	bool Turn = true; //TODO if false=player2,true=player1
 	while(true){
+		system("cls");//clear terminal before draw new board
 		drawBoard(board);
 		if(Turn){ //player1
 			if(isLose(p1)) {
