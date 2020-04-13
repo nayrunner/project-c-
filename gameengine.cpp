@@ -31,6 +31,7 @@ int main()
         //if ('P')
         if(command == 'P'){
 			cout<<"\n====================================================\n\n";
+			system("cls");
             break;
         }
         //else if('H')
@@ -94,7 +95,7 @@ int main()
 	//testPtr(p1); //debugFunc
 	bool Turn = true; //TODO if false=player2,true=player1
 	while(true){
-		system("cls");//clear terminal before draw new board
+		
 		drawBoard(board);
 		if(Turn){ //player1
 			if(isLose(p1)) {
@@ -218,7 +219,8 @@ void inputCommand(Player &P,Player &O,int B[][8],bool &T){
 				else{
 					Move(com,move,P,O,B);
 					if(P.number == 1) T = false;
-					else T = true; 
+					else T = true;
+					system("cls");
 				}
 			}
 		}else{
