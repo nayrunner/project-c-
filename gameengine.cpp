@@ -15,11 +15,6 @@ int TranslateCom(string);
 void Move(string,string,Player &,Player &,int [][8]);
 bool isLose(Player);
 
-void testPtr(Player);	//! DebugFunction NOT-IN-FINAL-VERSION
-void testAddress(int [][8]); //! DebugFunction NOT-IN-FINAL-VERSION
-
-
-
 int main()
 {   //start manu
     char command;
@@ -91,8 +86,6 @@ int main()
 	p2.ptr.push_back(&board[2][6]);
 	p2.ptr.push_back(&board[2][7]);
 	
-	//testAddress(board); //debugFunc
-	//testPtr(p1); //debugFunc
 	bool Turn = true; //TODO if false=player2,true=player1
 	while(true){
 		
@@ -271,24 +264,6 @@ bool isLose(Player P){
 		if(5 == abs(*P.ptr[i])) return false;
 	}
 	return true;
-}
-
-//*! DebugFunction NOT-IN-FINAL-VERSION *//
-void testPtr(Player p){	
-	for(int i=0;i < 16 ;i++) cout << p.ptr[i] <<"\n";
-	cout << "Player " << p.number << " Pieces\n";
-}
-
-void testAddress(int B[][8]){    
-	cout << "\n";
-	for(int i = 0; i < 8 ; i++){
-		for(int j = 0;j < 8; j++){
-			cout << " || " << &B[i][j];
-		}
-		cout << " ||";
-		cout << "\n";
-	}
-	cout << "-------------------------------------------------------------------\n";
 }
 
 /*
