@@ -269,47 +269,95 @@ bool Player::checkblock(string com,string move,int pieces,int B[][8]){
         if(move[1]>com[1]){ //? row 
             for(int i = 0;i<move[1]-com[1];i++){
                 int x = int(toupper(move[0]))-65 ;
-	            int y = (49-int(move[1]))+7+i;
-	            int *board = &B[y][x];
+	            int y = (49-int(move[1]))+7;
+                int z = y+i;
+	            int *board = &B[z][x];
 	            vector<int*>::iterator check; 
 	            check = find(ptr.begin(),ptr.end(),board);
 	            if (*check != board || **check == 0){}
                 else {/*cout<<**check<<endl;*/return false;}
+                
+                //to make it dont jump over opp pieces
+                if(number==1){
+                    if(B[z][x]<0 && B[z][x] != B[y][x]){return false;}
+                }
+                if(number==2){
+                    if(B[z][x]>0 && B[z][x] != B[y][x]){return false;}
+                }
+                cout<<B[z][x]<<" "<<B[y][x]<<"\n";
+
 	        }
         }else{
             for(int i = 0;i<com[1]-move[1];i++){
                 int x = int(toupper(move[0]))-65 ;
-	            int y = (49-int(move[1]))+7-i;
-	            int *board = &B[y][x];
+	            int y = (49-int(move[1]))+7;
+                int z = y-i;
+	            int *board = &B[z][x];
 	            vector<int*>::iterator check; 
 	            check = find(ptr.begin(),ptr.end(),board);
 	            if (*check != board || **check == 0){}
                 else {/*cout<<**check<<endl*/;return false;}
+
+                 //to make it dont jump over opp pieces
+                if(number==1){
+                    if(B[z][x]<0 && B[z][x] != B[y][x]){cout<<B[z][x]<<" "<<B[y][x]<<"\n";return false;}
+                }
+                if(number==2){
+                    if(B[z][x]>0 && B[z][x] != B[y][x]){cout<<B[z][x]<<" "<<B[y][x]<<"\n";return false;}
+                }
+                cout<<B[z][x]<<" "<<B[y][x]<<"\n";
+                
 	        }
         }
         if(move[0]>com[0]){ //? columb
             for(int i = 0;i<(move[0]-com[0]);i++){
-                int x = int(toupper(move[0]))-65-i ;
+                int x = int(toupper(move[0]))-65 ;
 	            int y = (49-int(move[1]))+7;
-	            int *board = &B[y][x];
+                int z = x-i;
+	            int *board = &B[y][z];
 	            vector<int*>::iterator check; 
 	            check = find(ptr.begin(),ptr.end(),board);
-	            if (*check != board || *check == 0){}
+	            if (*check != board || **check == 0){}
                 else {/*cout<<**check<<endl;*/return false;}
+
+                //to make it dont jump over opp pieces
+                if(number==1){
+                    if(B[y][z]<0 && B[y][z] != B[y][x]){/*cout<<B[z][x]<<" "<<B[y][x]<<"\n";*/return false;}
+                }
+                if(number==2){
+                    if(B[y][z]>0 && B[y][z] != B[y][x]){/*cout<<B[z][x]<<" "<<B[y][x]<<"\n";*/return false;}
+                }
+                
+                
 	        }
         }else{
             for(int i = 0;i<(com[0]-move[0]);i++){
-                int x = int(toupper(move[0]))-65+i ;
+                int x = int(toupper(move[0]))-65 ;
 	            int y = (49-int(move[1]))+7;
-	            int *board = &B[y][x];
+                int z = x+i;
+	            int *board = &B[y][z];
 	            vector<int*>::iterator check; 
 	            check = find(ptr.begin(),ptr.end(),board);
-	            if (*check != board || *check == 0){}
+	            if (*check != board || **check == 0){}
                 else {/*cout<<**check<<endl;*/return false;}
+                
+                //to make it dont jump over opp pieces
+                if(number==1){
+                    if(B[y][z]<0 && B[y][z] != B[y][x]){/*cout<<B[z][x]<<" "<<B[y][x]<<"\n";*/return false;}
+                }
+                if(number==2){
+                    if(B[y][z]>0 && B[y][z] != B[y][x]){/*cout<<B[z][x]<<" "<<B[y][x]<<"\n";*/return false;}
+                }
+                
 	        }
         }
         return true;
-    }else{ //?for others
+    }
+    
+    
+    
+    
+    else{ //?for others
         int x = int(toupper(move[0]))-65 ;
 	    int y = (49-int(move[1]))+7;
 	    int *board = &B[y][x];
