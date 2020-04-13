@@ -3,7 +3,6 @@ bool checkmate(int P,int b[][8]){
 	
 	//player2's turn check all player1's pieces
 	if(P==1){
-		int check=0;
 	for (int columb = 0; columb < 8; columb++)
 	{
 		for(int row = 0; row < 8; row++)
@@ -81,7 +80,6 @@ bool checkmate(int P,int b[][8]){
 	
 	//player1's turn check all player2's pieces
 	if(P==2){
-		int check=0;
 	for (int columb = 0; columb < 8; columb++)
 	{
 		for(int row = 0; row < 8; row++)
