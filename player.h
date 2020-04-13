@@ -300,12 +300,11 @@ bool Player::checkblock(string com,string move,int pieces,int B[][8]){
 
                  //to make it dont jump over opp pieces
                 if(number==1){
-                    if(B[z][x]<0 && B[z][x] != B[y][x]){cout<<B[z][x]<<" "<<B[y][x]<<"\n";return false;}
+                    if(B[z][x]<0 && B[z][x] != B[y][x]){/*cout<<B[z][x]<<" "<<B[y][x]<<"\n";*/return false;}
                 }
                 if(number==2){
-                    if(B[z][x]>0 && B[z][x] != B[y][x]){cout<<B[z][x]<<" "<<B[y][x]<<"\n";return false;}
+                    if(B[z][x]>0 && B[z][x] != B[y][x]){/*cout<<B[z][x]<<" "<<B[y][x]<<"\n";*/return false;}
                 }
-                cout<<B[z][x]<<" "<<B[y][x]<<"\n";
                 
 	        }
         }
