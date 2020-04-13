@@ -273,8 +273,8 @@ bool Player::checkblock(string com,string move,int pieces,int B[][8]){
 	            int *board = &B[y][x];
 	            vector<int*>::iterator check; 
 	            check = find(ptr.begin(),ptr.end(),board);
-	            if (*check != board || *check == 0){return true;}
-                else return false;
+	            if (*check != board || **check == 0){}
+                else {/*cout<<**check<<endl;*/return false;}
 	        }
         }else{
             for(int i = 0;i<com[1]-move[1];i++){
@@ -283,29 +283,29 @@ bool Player::checkblock(string com,string move,int pieces,int B[][8]){
 	            int *board = &B[y][x];
 	            vector<int*>::iterator check; 
 	            check = find(ptr.begin(),ptr.end(),board);
-	            if (*check != board || *check == 0){return true;}
-                else return false;
+	            if (*check != board || **check == 0){}
+                else {/*cout<<**check<<endl*/;return false;}
 	        }
         }
         if(move[0]>com[0]){ //? columb
             for(int i = 0;i<(move[0]-com[0]);i++){
-                int x = int(toupper(move[0]))-65+i ;
-	            int y = (49-int(move[1]))+7;
-	            int *board = &B[y][x];
-	            vector<int*>::iterator check; 
-	            check = find(ptr.begin(),ptr.end(),board);
-	            if (*check != board || *check == 0){return true;}
-                else return false;
-	        }
-        }else{
-            for(int i = 0;i<(com[0]-move[0]);i++){
                 int x = int(toupper(move[0]))-65-i ;
 	            int y = (49-int(move[1]))+7;
 	            int *board = &B[y][x];
 	            vector<int*>::iterator check; 
 	            check = find(ptr.begin(),ptr.end(),board);
-	            if (*check != board || *check == 0){return true;}
-                else return false;
+	            if (*check != board || *check == 0){}
+                else {/*cout<<**check<<endl;*/return false;}
+	        }
+        }else{
+            for(int i = 0;i<(com[0]-move[0]);i++){
+                int x = int(toupper(move[0]))-65+i ;
+	            int y = (49-int(move[1]))+7;
+	            int *board = &B[y][x];
+	            vector<int*>::iterator check; 
+	            check = find(ptr.begin(),ptr.end(),board);
+	            if (*check != board || *check == 0){}
+                else {/*cout<<**check<<endl;*/return false;}
 	        }
         }
         return true;
