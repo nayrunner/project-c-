@@ -3,6 +3,7 @@
 #include"how2play.h"
 #include"checkmate.h"
 #include <cstdlib>
+#include"windows.h"
 using namespace std;
 
 void makeLine();
@@ -16,7 +17,12 @@ void Move(string,string,Player &,Player &,int [][8]);
 bool isLose(Player);
 
 int main()
-{   //start manu
+{   //resize console
+	HWND console = GetConsoleWindow();
+    RECT ConsoleRect;
+    GetWindowRect(console, &ConsoleRect); 
+    MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 450, 450, TRUE);
+	//start manu
     char command;
     grandopening();
     while(true){
