@@ -2,9 +2,10 @@
 #include"startmenu.h"
 #include"how2play.h"
 #include"checkmate.h"
+#include"windows.h"
 #include <unistd.h>
 #include <cstdlib>
-#include"windows.h"
+
 using namespace std;
 
 void makeLine();
@@ -18,7 +19,9 @@ void Move(string,string,Player &,Player &,int [][8]);
 bool isLose(Player);
 
 int main()
-{   //resize console
+{   
+	SetConsoleTitle("THAI CHESS");
+	//resize console
 	HWND console = GetConsoleWindow();
     RECT ConsoleRect;
     GetWindowRect(console, &ConsoleRect); 
@@ -183,18 +186,22 @@ bool checkIsLegit(string s){
 				return true;
 			}else{
 				cout << "Invalid Position.\n";
+				sleep(1.5);
 				return false;
 			}
 		}else{
 			cout << "Invalid Position.\n";
+			sleep(1.5);
 			return false;
 		}
 	}else if(s == "C" ){
 		cout << "Cancelled.\n";
+		sleep(0.75);
 		return false;
 	}
 	else{
 		cout << "Invalid Input.\n";
+		sleep(1.5);
 		return false;
 	}
 }
