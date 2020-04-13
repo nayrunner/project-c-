@@ -2,6 +2,7 @@
 #include"startmenu.h"
 #include"how2play.h"
 #include"checkmate.h"
+#include <unistd.h>
 #include <cstdlib>
 #include"windows.h"
 using namespace std;
@@ -21,7 +22,7 @@ int main()
 	HWND console = GetConsoleWindow();
     RECT ConsoleRect;
     GetWindowRect(console, &ConsoleRect); 
-    MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 450, 450, TRUE);
+    MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 500, 500, TRUE);
 	//start manu
     char command;
     grandopening();
@@ -36,8 +37,13 @@ int main()
             break;
         }
         //else if('H')
-        if(command == 'H'){tutorial();
+        else if(command == 'H'){tutorial();
         grandopening();}
+        
+        else{
+        	system("cls");
+			grandopening();	
+		}
     }
     //game start
 
@@ -94,7 +100,8 @@ int main()
 	
 	bool Turn = true; //TODO if false=player2,true=player1
 	while(true){
-		
+		sleep(0.5);
+		system("cls");
 		drawBoard(board);
 		if(Turn){ //player1
 			if(isLose(p1)) {
@@ -212,18 +219,23 @@ void inputCommand(Player &P,Player &O,int B[][8],bool &T){
 			
 			if(P.checkmove(move,com,B[row][columb],B) == false) {
 				if(move != "C") cout << "Invalid Move.\n";
+				sleep(1.5);
 			}
 			else{
-				if(P.checkblock(com,move,B[row][columb],B)== false) cout << "Blocked\n";
+				if(P.checkblock(com,move,B[row][columb],B)== false) {
+					cout << "Blocked\n";
+					sleep(1.5);
+				}
 				else{
 					Move(com,move,P,O,B);
 					if(P.number == 1) T = false;
 					else T = true;
-					system("cls");
+
 				}
 			}
 		}else{
 			cout << "This isn't your pieces!'\n";
+			sleep(1.5);
 		}
 	}
 }
