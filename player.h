@@ -356,7 +356,7 @@ bool Player::checkblock(string com,string move,int pieces,int B[][8]){
     
     
     
-    else{ //?for others
+    else if(pieces!=2 || pieces!=-2){ //?for others
         int x = int(toupper(move[0]))-65 ;
 	    int y = (49-int(move[1]))+7;
 	    int *board = &B[y][x];
