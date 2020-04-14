@@ -1,4 +1,6 @@
-# PROJECT CHESS
+# PROJECT THAI CHESS
+
+THANK FOR YOUR COOPERATION!
 
 --present project 14/4/63 13.00 น.- 16.00 น.--
 
@@ -14,6 +16,4 @@ https://youtu.be/SXuhnDvKct0 พื้นฐานหมากรุกไทย
 
 https://docs.microsoft.com/en-us/windows/console/setconsolewindowinfo?redirectedfrom=MSDN SetConsoleWindowInfo
 
-3 Days left
-
-
+# ---====COMPLETE====---
