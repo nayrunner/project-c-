@@ -26,7 +26,7 @@ int main()
     RECT ConsoleRect;
     GetWindowRect(console, &ConsoleRect); 
     MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 500, 500, TRUE);
-	//start manu
+	//start menu
     char command;
     grandopening();
     while(true){
