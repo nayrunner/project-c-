@@ -287,7 +287,7 @@ bool Player::checkblock(string com,string move,int pieces,int B[][8]){
                 cout<<B[z][x]<<" "<<B[y][x]<<"\n";
 
 	        }
-        }else{
+        }else if(move[1]<com[1]){
             for(int i = 0;i<com[1]-move[1];i++){
                 int x = int(toupper(move[0]))-65 ;
 	            int y = (49-int(move[1]))+7;
@@ -329,7 +329,7 @@ bool Player::checkblock(string com,string move,int pieces,int B[][8]){
                 
                 
 	        }
-        }else{
+        }else if(move[0]<com[0]){
             for(int i = 0;i<(com[0]-move[0]);i++){
                 int x = int(toupper(move[0]))-65 ;
 	            int y = (49-int(move[1]))+7;
